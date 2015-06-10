@@ -31,18 +31,34 @@ public class Disparo {
         if (arriba == true) {
         escenario[personajeX][personajeY-1].setIcon(crea.obtenerImagen(6));
         panelEscenario.add(escenario[personajeX][personajeY-1]);
+        
+        
+        
+        
         }
         if (abajo == true) {
         escenario[personajeX][personajeY+1].setIcon(crea.obtenerImagen(6));
         panelEscenario.add(escenario[personajeX][personajeY+1]);
+        
+        
+        
+        
         }
         if (derecha == true) {
         escenario[personajeX+1][personajeY].setIcon(crea.obtenerImagen(6));
         panelEscenario.add(escenario[personajeX+1][personajeY]);
+        
+        
+        
+        
         }
         if (izquierda == true) {
         escenario[personajeX-1][personajeY].setIcon(crea.obtenerImagen(6));
         panelEscenario.add(escenario[personajeX-1][personajeY]);
+        
+        
+        
+        
         }
 
     }
