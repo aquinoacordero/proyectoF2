@@ -27,43 +27,119 @@ public class Disparo {
 
     int contBalas;
 
-    public Disparo(int personajeX, int personajeY, JLabel[][] escenario, int[][] escMatriz, JPanel panelEscenario, boolean arriba, boolean abajo, boolean derecha, boolean izquierda) {
+    public Disparo(int personajeX, int personajeY) {
+
+        this.x = personajeX;
+        this.y = personajeY;
+
+    }
+
+    public void movdisparo(JLabel[][] escenario, int[][] escMatriz, JPanel panelEscenario, boolean arriba, boolean abajo, boolean derecha, boolean izquierda) {
 
         if (arriba == true) {
-            escenario[personajeX][personajeY - 1].setIcon(crea.obtenerImagen(6));
-            panelEscenario.add(escenario[personajeX][personajeY - 1]);
+            escenario[x][y - 1].setIcon(crea.obtenerImagen(6));
+            panelEscenario.add(escenario[x][y - 1]);
 
-            do {
+            //mov
+            
+            for (int i = 1; i < 15; i++) {
+                System.out.println("Posicion bala X" + x);
+                System.out.println("Posicion bala Y" + y);
 
-            } while (colision == false);
+                escenario[x][y - 1].setIcon(crea.obtenerImagen(6));
+                if (i >= 2) {
+                    escenario[x][y].setIcon(crea.obtenerImagen(Contenedor.suelo));
+                }
+                y--;
+
+                if (escMatriz[x][y - 2] == Contenedor.muro) {
+                    colision = true;
+
+                }
+                if (escMatriz[x][y] == Contenedor.zombieD) {
+                    colision = true;
+
+                }
+            }
 
         }
         if (abajo == true) {
-            escenario[personajeX][personajeY + 1].setIcon(crea.obtenerImagen(6));
-            panelEscenario.add(escenario[personajeX][personajeY + 1]);
+            escenario[x][y + 1].setIcon(crea.obtenerImagen(6));
+            panelEscenario.add(escenario[x][y + 1]);
 
-            do {
+            for (int i = 1; i < 15; i++) {
+                System.out.println("Posicion bala X" + x);
+                System.out.println("Posicion bala Y" + y);
 
-            } while (colision == false);
+                escenario[x][y + 1].setIcon(crea.obtenerImagen(6));
+                if (i >= 2) {
+                    escenario[x][y].setIcon(crea.obtenerImagen(Contenedor.suelo));
+                }
+                y++;
+
+                if (escMatriz[x][y + 2] == Contenedor.muro) {
+                    colision = true;
+
+                }
+                if (escMatriz[x][y] == Contenedor.zombieD) {
+                    colision = true;
+
+                }
+            }
 
         }
         if (derecha == true) {
-            escenario[personajeX + 1][personajeY].setIcon(crea.obtenerImagen(6));
-            panelEscenario.add(escenario[personajeX + 1][personajeY]);
+            escenario[x + 1][y].setIcon(crea.obtenerImagen(6));
+            panelEscenario.add(escenario[x + 1][y]);
 
-            do {
+            for (int i = 1; i < 15; i++) {
+                System.out.println("Posicion bala X" + x);
+                System.out.println("Posicion bala Y" + y);
 
-            } while (colision == false);
+                escenario[x + 1][y].setIcon(crea.obtenerImagen(6));
+                if (i >= 2) {
+                    escenario[x][y].setIcon(crea.obtenerImagen(Contenedor.suelo));
+                }
+                x++;
+
+                if (escMatriz[x + 2][y] == Contenedor.muro) {
+                    colision = true;
+
+                }
+                if (escMatriz[x][y] == Contenedor.zombieD) {
+                    colision = true;
+
+                }
+            }
 
         }
         if (izquierda == true) {
-            escenario[personajeX - 1][personajeY].setIcon(crea.obtenerImagen(6));
-            panelEscenario.add(escenario[personajeX - 1][personajeY]);
+            escenario[x - 1][y].setIcon(crea.obtenerImagen(6));
+            panelEscenario.add(escenario[x - 1][y]);
 
-            do {
+            for (int i = 1; i < 15; i++) {
+                System.out.println("Posicion bala X" + x);
+                System.out.println("Posicion bala Y" + y);
 
-            } while (colision == false);
+                escenario[x - 1][y].setIcon(crea.obtenerImagen(6));
+                if (i >= 2) {
+                    escenario[x][y].setIcon(crea.obtenerImagen(Contenedor.suelo));
+                }
+                x--;
 
+                if (escMatriz[x - 2][y] == Contenedor.muro) {
+                    colision = true;
+
+                }
+                if (escMatriz[x][y] == Contenedor.zombieD) {
+                    colision = true;
+
+                }
+                if (escMatriz[x][y] == Contenedor.zombieI) {
+                    colision = true;
+
+                }
+            }
         }
 
     }

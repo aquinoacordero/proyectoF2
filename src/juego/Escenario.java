@@ -289,9 +289,14 @@ public class Escenario extends JFrame {
 
             case 32:
 
-                disp = new Disparo(personajeX, personajeY, escenario, escMatriz, panelEscenario, arriba, abajo, derecha, izquierda);
-                contBalas = disp.cargador(contBalas);
+                if (contBalas > 0) {
+                    disp = new Disparo(personajeX, personajeY);
+                    contBalas = disp.cargador(contBalas);
+                    disp.movdisparo(escenario, escMatriz, panelEscenario, arriba, abajo, derecha, izquierda);
+                } else {
 
+                    JOptionPane.showMessageDialog(null, "NO HAY MUNICION");
+                }
                 break;
             case 37:    //izq
                 arriba = false;
